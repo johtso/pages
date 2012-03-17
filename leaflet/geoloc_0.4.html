@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html style="height:100%">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Leaflet Geolocation v0.4</title>
+
+    <link rel="stylesheet" href="/leaflet-0.4/leaflet.css" />
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="https://raw.github.com/CloudMade/Leaflet/master/dist/leaflet.ie.css" />
+    <![endif]-->
+
+    <script src="https://raw.github.com/CloudMade/Leaflet/master/dist/leaflet-src.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            map = new L.Map('map');
+
+            var maptiles = new L.TileLayer("http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
+                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+                subdomains: ['otile1', 'otile2', 'otile3', 'otile4'],
+                maxZoom: 18
+            });
+
+            var london = new L.LatLng(51.505, -0.09);
+            map.setView(london, 13);
+            map.locate(setView=true);
+
+            map.addLayer(maptiles);
+        });
+
+    </script>
+</head>
+<body style="height:100%">
+    <div id="map" style="height:100%"></div>
+</body>
+</html>
